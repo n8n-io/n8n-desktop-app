@@ -1,0 +1,9 @@
+dist
+dist-mac
+dist-win
+dist-mac-unsigned
+node_modules
+.DS_Store
+.env
+.todo
+.idea

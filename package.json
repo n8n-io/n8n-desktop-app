@@ -1,0 +1,62 @@
+{
+  "name": "n8n",
+  "version": "1.10.0",
+  "description": "n8n desktop version",
+  "main": "index.js",
+  "scripts": {
+    "dev": "cross-env ELECTRON_DEV_MODE=true electron .",
+    "build-mac": "rm -rf dist && electron-builder build --mac",
+    "build-mac-no-sign": "rm -rf dist && electron-builder build --mac -c.mac.identity=null",
+    "build-win": "rm -rf dist && electron-builder build --win --x64",
+    "remove-incompatible-nodes": "node scripts/remove-incompatible-nodes.js"
+  },
+  "build": {
+    "appId": "io.n8n.desktop",
+    "productName": "n8n",
+    "asar": false,
+    "files": [
+      "**/*.js"
+    ],
+    "directories": {
+      "buildResources": "assets"
+    },
+    "mac": {
+      "hardenedRuntime": true,
+      "entitlements": "entitlements.mac.plist",
+      "entitlementsInherit": "entitlements.mac.plist",
+      "gatekeeperAssess": false,
+      "target": {
+        "target": "default",
+        "arch": [
+          "x64"
+        ]
+      }
+    }
+  },
+  "keywords": [
+    "automate",
+    "automation",
+    "IaaS",
+    "iPaaS",
+    "n8n",
+    "workflow"
+  ],
+  "author": "n8n GmbH",
+  "license": "SEE LICENSE IN LICENSE.md",
+  "dependencies": {
+    "cross-env": "^7.0.3",
+    "dotenv": "^10.0.0",
+    "find-process": "^1.4.7",
+    "n8n": "^0.216.2",
+    "node-fetch": "^2",
+    "p-cancelable": "^2.0.0",
+    "respawn": "^2.6.0",
+    "tcp-port-used": "^1.0.2",
+    "wait-on": "^6.0.0"
+  },
+  "devDependencies": {
+    "electron": "^15.1.1",
+    "electron-builder": "^22.11.7",
+    "electron-notarize": "^1.1.1"
+  }
+}
